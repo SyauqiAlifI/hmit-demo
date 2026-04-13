@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans:
+        "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+* {
+    @apply text-white;
+}
+
+body {
+    @apply overflow-x-hidden;
+}
+
+/* #nav-links > li > a {
+    @apply;
+} */
+
+/* ─── Mobile Nav Panel ─── */
+.mobile-nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: rgba(23, 23, 23, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(228, 140, 23, 0.15);
+}
+
+.mobile-nav.open {
+    max-height: 400px;
+}
+
+.mobile-nav-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s ease;
+}
+
+.mobile-nav-link:hover {
+    color: rgba(228, 140, 23, 1);
+}
+
+/* Hide mobile panel on desktop */
+@media (min-width: 768px) {
+    .mobile-nav {
+        display: none;
+    }
+}
+
+/* ─── Hamburger -> X animation ─── */
+#menu-toggle.active .menu-bar:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+}
+
+#menu-toggle.active .menu-bar:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle.active .menu-bar:nth-child(3) {
+    transform: translateY(-4px) rotate(-45deg);
+}
+/* ─── HMIT Text Stack ─── */
+.outlined-text-wrapper {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+
+    /* Vertical layout: echo stack on top, description below */
+    display: flex;
+    flex-direction: column;
+
+    /* ── Mobile-first defaults ── */
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%) rotate(-10deg) skew(10deg, 5deg);
+}
+
+/* Grid stacking for overlapping echo + solid text */
+.echo-stack {
+    display: grid;
+}
+
+.echo-stack > * {
+    grid-area: 1 / 1;
+    font-size: 5rem; /* mobile size */
+    font-weight: 800;
+    letter-spacing: var(--letter-spacing, 0.05em);
+    line-height: 1;
+}
+
+/* ─── Solid front text ─── */
+.solid-text {
+    color: var(--text-color, rgba(228, 140, 23, 1));
+}
+
+/* ─── Outlined echo layers ─── */
+.echo-text {
+    color: transparent;
+    -webkit-text-stroke: var(--stroke-width, 1.5px)
+        var(--stroke-color, rgba(228, 140, 23, 1));
+    paint-order: stroke fill;
+
+    transform: translate(var(--echo-x, 0px), var(--echo-y, 0px));
+    opacity: var(--echo-opacity, 0.2);
+}
+
+/* ─── Description text ─── */
+.hero-desc {
+    font-size: 1rem; /* mobile size */
+    font-weight: 400;
+    color: white;
+    letter-spacing: 0.08em;
+    margin-top: 0.5rem;
+}
+
+/* ─── Responsive ─── */
+
+/* sm (≥ 640px) */
+@media (min-width: 640px) {
+    .outlined-text-wrapper {
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -50%) rotate(-10deg) skew(10deg, 5deg);
+    }
+
+    .echo-stack > * {
+        font-size: 7rem;
+    }
+
+    .echo-text {
+        -webkit-text-stroke-width: 1.5px;
+    }
+
+    .hero-desc {
+        font-size: 1.4rem;
+    }
+}
+
+/* md (≥ 768px) */
+@media (min-width: 768px) {
+    .outlined-text-wrapper {
+        left: 45%;
+        transform: translate(-50%, -50%) rotate(-15deg) skew(15deg, 8deg);
+    }
+
+    .echo-stack > * {
+        font-size: 8rem;
+    }
+
+    .echo-text {
+        -webkit-text-stroke-width: 2px;
+    }
+
+    .hero-desc {
+        font-size: 1.6rem;
+    }
+}
+
+/* lg (≥ 1024px) — full desktop */
+@media (min-width: 1024px) {
+    .outlined-text-wrapper {
+        top: var(--pos-y, 50%);
+        left: var(--pos-x, 40%);
+        transform: translate(-50%, -50%) rotate(var(--rotate, -20deg))
+            scale(var(--scale, 1))
+            skew(var(--skew-x, 20deg), var(--skew-y, 10deg));
+    }
+
+    .echo-stack > * {
+        font-size: var(--font-size, 10rem);
+    }
+
+    .hero-desc {
+        font-size: 1.5rem;
+    }
+}
