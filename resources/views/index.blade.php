@@ -39,12 +39,12 @@
 
         {{-- Desktop nav links (hidden on mobile) --}}
         <ul id="nav-links" class="hidden lg:flex items-center justify-between gap-6">
-          <li><a href="/">Home</a></li>
-          <li><a href="#about">About HMIT</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#blogs">Blogs</a></li>
-          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="{{ route('home') }}">Home</a></li>
+          <li><a href="{{ route('about') }}">About HMIT</a></li>
+          <li><a href="{{ route('services') }}">Services</a></li>
+          <li><a href="{{ route('gallery') }}">Gallery</a></li>
+          <li><a href="{{ route('blogs') }}">Blogs</a></li>
+          <li><a href="{{ route('contacts') }}">Contact Us</a></li>
         </ul>
 
         {{-- Hamburger button (visible on mobile only) --}}
@@ -62,12 +62,12 @@
     {{-- Mobile nav menu --}}
     <div id="mobile-nav" class="mobile-nav">
       <ul class="flex flex-col items-center gap-6 py-8">
-        <li><a href="/" class="mobile-nav-link">Home</a></li>
-        <li><a href="#about" class="mobile-nav-link">About HMIT</a></li>
-        <li><a href="#services" class="mobile-nav-link">Services</a></li>
-        <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
-        <li><a href="#blogs" class="mobile-nav-link">Blogs</a></li>
-        <li><a href="#contact" class="mobile-nav-link">Contact Us</a></li>
+        <li><a href="{{ route('home') }}" class="mobile-nav-link">Home</a></li>
+        <li><a href="{{ route('about') }}" class="mobile-nav-link">About HMIT</a></li>
+        <li><a href="{{ route('services') }}" class="mobile-nav-link">Services</a></li>
+        <li><a href="{{ route('gallery') }}" class="mobile-nav-link">Gallery</a></li>
+        <li><a href="{{ route('blogs') }}" class="mobile-nav-link">Blogs</a></li>
+        <li><a href="{{ route('contacts') }}" class="mobile-nav-link">Contact Us</a></li>
       </ul>
     </div>
   </header>
