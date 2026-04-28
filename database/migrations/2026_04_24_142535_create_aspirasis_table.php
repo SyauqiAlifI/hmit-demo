@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('aspirasis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('nama')->nullable();
             $table->text('pesan');
             $table->timestamps();

@@ -33,6 +33,7 @@
 
 <body class="bg-neutral-900 dark">
   <x-header />
+  <div class="w-full h-[80px]"></div>
   @yield('content')
 </body>
 

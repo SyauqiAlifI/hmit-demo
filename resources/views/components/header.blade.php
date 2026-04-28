@@ -25,7 +25,19 @@
         <span class="menu-bar block w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
       </button>
 
-      <div class="hidden lg:block"></div>
+      <div class="hidden lg:flex gap-4">
+        @auth
+          <a href="{{ route('dashboard') }}" class="flex items-center justify-center hover:underline">Dashboard</a>
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit"
+              class="px-3 py-2 text-red-500! cursor-pointer rounded-lg hover:text-white! hover:bg-red-500 transition-all border border-red-500">Logout</button>
+          </form>
+        @else
+          <a href="{{ route('login') }}"
+            class="px-3 py-2 text-black! rounded-lg hover:bg-white/60 transition-all bg-white">Login</a>
+        @endauth
+      </div>
     </nav>
   </div>
   {{-- Mobile nav menu --}}
